@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品列表 - 购物推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo">
+                    <h1>购物推荐</h1>
+                </div>
+                <div class="user-info-top" id="userInfoTop" style="display:none;">
+                    <span id="usernameDisplay" class="username-top"></span>
+                    <button class="logout-btn-top" id="logoutBtnTop" onclick="logout()">退出</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="products.html" class="active">商品列表</a>
+                <a href="alternatives.html">平替推荐</a>
+                <a href="login.html" id="loginLink">登录</a>
+                <a href="favorites.html" id="favoritesLink" style="display:none;">我的收藏</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">AI智能商品列表</h1>
+                    <p class="page-subtitle">AI自动为您推荐精选商品，206+款商品任您挑选</p>
+                </div>
+                <div class="page-stats">
+                    <div class="page-stat-item">
+                        <span class="stat-value" id="totalProducts">206</span>
+                        <span class="stat-label">总商品数</span>
+                    </div>
+                    <div class="page-stat-item">
+                        <span class="stat-value" id="filteredCount">206</span>
+                        <span class="stat-label">当前显示</span>
+                    </div>
+                    <div class="page-stat-item">
+                        <span class="stat-value">9</span>
+                        <span class="stat-label">商品分类</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 筛选栏 -->
+        <section class="filters">
+            <div class="container">
+                <div class="filters-header">
+                    <h3>AI智能筛选</h3>
+                    <div class="view-toggle">
+                        <button class="view-btn active" id="gridView" onclick="switchView('grid')" title="网格视图">⊞</button>
+                        <button class="view-btn" id="listView" onclick="switchView('list')" title="列表视图">☰</button>
+                    </div>
+                </div>
+                <div class="filters-content">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label><span class="filter-icon">🏷️</span>分类：</label>
+                            <select id="categoryFilter" onchange="applyFilters()">
+                                <option value="">全部分类</option>
+                                <option value="electronics">📱 电子产品</option>
+                                <option value="clothing">👔 服装配饰</option>
+                                <option value="cosmetics">💄 美妆护肤</option>
+                                <option value="home">🏠 家居用品</option>
+                                <option value="sports">⚽ 运动健身</option>
+                                <option value="food">🍔 食品饮料</option>
+                                <option value="books">📚 图书文具</option>
+                                <option value="baby">👶 母婴用品</option>
+                                <option value="car">🚗 汽车用品</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label><span class="filter-icon">💰</span>价格：</label>
+                            <select id="priceFilter" onchange="applyFilters()">
+                                <option value="">全部价格</option>
+                                <option value="0-100">0-100元</option>
+                                <option value="100-500">100-500元</option>
+                                <option value="500-1000">500-1000元</option>
+                                <option value="1000+">1000元以上</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label><span class="filter-icon">⭐</span>评分：</label>
+                            <select id="ratingFilter" onchange="applyFilters()">
+                                <option value="">全部评分</option>
+                                <option value="4.5+">4.5分以上</option>
+                                <option value="4.0+">4.0分以上</option>
+                                <option value="3.5+">3.5分以上</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label><span class="filter-icon">🔀</span>排序：</label>
+                            <select id="sortFilter" onchange="applyFilters()">
+                                <option value="default">默认排序</option>
+                                <option value="price-asc">价格从低到高</option>
+                                <option value="price-desc">价格从高到低</option>
+                                <option value="rating">评分最高</option>
+                                <option value="name">名称A-Z</option>
+                            </select>
+                        </div>
+                        <button class="reset-filters-btn" onclick="resetFilters()">重置筛选</button>
+                    </div>
+                    <div class="quick-filters">
+                        <span class="quick-filter-label">快速筛选：</span>
+                        <button class="quick-filter-tag" onclick="quickFilter('price-asc')">💰 价格最低</button>
+                        <button class="quick-filter-tag" onclick="quickFilter('rating')">⭐ 评分最高</button>
+                        <button class="quick-filter-tag" onclick="quickFilter('electronics')">📱 电子产品</button>
+                        <button class="quick-filter-tag" onclick="quickFilter('cosmetics')">💄 美妆护肤</button>
+                        <button class="quick-filter-tag" onclick="quickFilter('home')">🏠 家居用品</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 商品列表 -->
+        <section class="products">
+            <div class="container">
+                <div class="product-grid" id="productsList">
+                    <!-- 商品卡片将通过JS动态加载 -->
+                </div>
+                <!-- 分页控件 -->
+                <div class="pagination" id="pagination">
+                    <!-- 分页按钮将通过JS动态加载 -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/imageHelper.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/products.js"></script>
+    
+    <!-- Coze AI 聊天机器人 -->
+    <!-- SDK将通过js/ai-chat.js动态加载，避免502错误 -->
+    <script src="js/ai-chat.js"></script>
+</body>
+</html>
+
