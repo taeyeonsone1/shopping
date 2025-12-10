@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI购物推荐 - 首页</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo">
+                    <h1>AI购物推荐</h1>
+                </div>
+                <div class="user-info-top" id="userInfoTop" style="display:none;">
+                    <span id="usernameDisplay" class="username-top"></span>
+                    <button class="logout-btn-top" id="logoutBtnTop" onclick="logout()">退出</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">首页</a>
+                <a href="products.html">商品列表</a>
+                <a href="alternatives.html">平替推荐</a>
+                <a href="login.html" id="loginLink">登录</a>
+                <a href="favorites.html" id="favoritesLink" style="display:none;">我的收藏</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- 滑动横幅 -->
+        <section class="banner-section">
+            <div class="banner-container">
+                <div class="banner-slider" id="bannerSlider">
+                    <div class="banner-slide active">
+                        <div class="banner-content">
+                            <h2 class="banner-title">AI购物推荐，智能为您省钱</h2>
+                            <p class="banner-subtitle">AI自动推荐高性价比平替商品，用更少的钱享受相似品质</p>
+                        </div>
+                    </div>
+                    <div class="banner-slide">
+                        <div class="banner-content">
+                            <h2 class="banner-title">AI智能匹配，精准推荐</h2>
+                            <p class="banner-subtitle">AI自动分析，为您精选30+平替方案，覆盖9大品类</p>
+                        </div>
+                    </div>
+                    <div class="banner-slide">
+                        <div class="banner-content">
+                            <h2 class="banner-title">AI自动推荐，个性化定制</h2>
+                            <p class="banner-subtitle">AI智能算法自动为您推荐最适合的平替商品</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="banner-dots">
+                    <span class="dot active" onclick="currentSlide(1)"></span>
+                    <span class="dot" onclick="currentSlide(2)"></span>
+                    <span class="dot" onclick="currentSlide(3)"></span>
+                </div>
+                <button class="banner-prev" onclick="changeSlide(-1)">❮</button>
+                <button class="banner-next" onclick="changeSlide(1)">❯</button>
+            </div>
+        </section>
+
+        <!-- 宣传标语 -->
+        <section class="slogan-section">
+            <div class="container">
+                <div class="slogan-content">
+                    <h1 class="main-slogan">AI购物推荐 - 省钱不降质，平替更明智</h1>
+                    <p class="sub-slogan">AI智能算法自动为您推荐最优质的平替方案，让每一分钱都花得值。AI自动分析商品特性，精准匹配您的需求</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 搜索栏 -->
+        <section class="search-section">
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索商品...">
+                    <button onclick="searchProducts()">搜索</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 统计信息卡片 -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">📦</div>
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">精选商品</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">💰</div>
+                        <div class="stat-number">30+</div>
+                        <div class="stat-label">平替方案</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">🏷️</div>
+                        <div class="stat-number">9</div>
+                        <div class="stat-label">商品分类</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon">⭐</div>
+                        <div class="stat-number">4.6</div>
+                        <div class="stat-label">平均评分</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类导航 -->
+        <section class="categories">
+            <div class="container">
+                <div class="section-header">
+                    <h2>商品分类</h2>
+                    <p class="section-subtitle">AI智能分类，快速找到您需要的商品</p>
+                </div>
+                <div class="category-grid">
+                    <div class="category-item" onclick="filterByCategory('electronics')">
+                        <div class="category-icon">📱</div>
+                        <span>电子产品</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('clothing')">
+                        <div class="category-icon">👔</div>
+                        <span>服装配饰</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('cosmetics')">
+                        <div class="category-icon">💄</div>
+                        <span>美妆护肤</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('home')">
+                        <div class="category-icon">🏠</div>
+                        <span>家居用品</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('sports')">
+                        <div class="category-icon">⚽</div>
+                        <span>运动健身</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('food')">
+                        <div class="category-icon">🍔</div>
+                        <span>食品饮料</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('books')">
+                        <div class="category-icon">📚</div>
+                        <span>图书文具</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('baby')">
+                        <div class="category-icon">👶</div>
+                        <span>母婴用品</span>
+                    </div>
+                    <div class="category-item" onclick="filterByCategory('car')">
+                        <div class="category-icon">🚗</div>
+                        <span>汽车用品</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 限时优惠 -->
+        <section class="special-offers">
+            <div class="container">
+                <div class="section-header">
+                    <h2>限时优惠</h2>
+                    <p class="section-subtitle">超值特价，错过再等一年</p>
+                </div>
+                <div class="product-grid" id="specialOffers">
+                    <!-- 特价商品将通过JS动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 热门推荐 -->
+        <section class="featured">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI热门推荐</h2>
+                    <p class="section-subtitle">AI自动为您精选热门商品，品质保证</p>
+                </div>
+                <div class="product-grid" id="featuredProducts">
+                    <!-- 商品卡片将通过JS动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 分类商品展示 -->
+        <section class="category-showcase">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI分类精选</h2>
+                    <p class="section-subtitle">AI智能分析各分类，为您推荐热门商品</p>
+                </div>
+                <div class="category-tabs">
+                    <button class="tab-btn active" onclick="showCategoryProducts('electronics', this)">电子产品</button>
+                    <button class="tab-btn" onclick="showCategoryProducts('cosmetics', this)">美妆护肤</button>
+                    <button class="tab-btn" onclick="showCategoryProducts('clothing', this)">服装配饰</button>
+                    <button class="tab-btn" onclick="showCategoryProducts('home', this)">家居用品</button>
+                </div>
+                <div class="product-grid" id="categoryProducts">
+                    <!-- 分类商品将通过JS动态加载 -->
+                </div>
+            </div>
+        </section>
+
+        <!-- 品牌展示 -->
+        <section class="brands-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>热门品牌</h2>
+                    <p class="section-subtitle">值得信赖的品牌推荐</p>
+                </div>
+                <div class="brands-grid">
+                    <div class="brand-item">Apple</div>
+                    <div class="brand-item">小米</div>
+                    <div class="brand-item">华为</div>
+                    <div class="brand-item">Nike</div>
+                    <div class="brand-item">Adidas</div>
+                    <div class="brand-item">Dior</div>
+                    <div class="brand-item">SK-II</div>
+                    <div class="brand-item">Dyson</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 平替推荐 -->
+        <section class="alternatives-preview">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI智能平替推荐</h2>
+                    <p class="section-subtitle">AI自动分析并推荐高性价比平替商品，为您节省每一分钱</p>
+                </div>
+                <div class="alternative-grid" id="alternativesPreview">
+                    <!-- 平替方案将通过JS动态加载 -->
+                </div>
+                <div class="view-more">
+                    <a href="alternatives.html">查看更多平替方案 →</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 服务特色 -->
+        <section class="features-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>AI服务特色</h2>
+                    <p class="section-subtitle">AI智能推荐，为什么选择我们</p>
+                </div>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <div class="feature-icon">🤖</div>
+                        <h3>AI自动推荐</h3>
+                        <p>AI智能算法自动分析商品特性，为您推荐最合适的平替方案</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">🎯</div>
+                        <h3>精准匹配</h3>
+                        <p>AI自动匹配您的需求，精准推荐高性价比商品</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">💰</div>
+                        <h3>省钱省心</h3>
+                        <p>AI推荐方案平均节省30%-70%，让每一分钱都花得值</p>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-icon">✅</div>
+                        <h3>品质保证</h3>
+                        <p>AI智能筛选，所有推荐商品都经过严格审核，品质有保障</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/imageHelper.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/banner.js"></script>
+    
+    <!-- Coze AI 聊天机器人 -->
+    <!-- SDK将通过js/ai-chat.js动态加载，避免502错误 -->
+    <script src="js/ai-chat.js"></script>
+    <!-- 备用方案：如果SDK加载失败，会自动加载 -->
+</body>
+</html>
+

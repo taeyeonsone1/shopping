@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的收藏 - 购物推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo">
+                    <h1>购物推荐</h1>
+                </div>
+                <div class="user-info-top" id="userInfoTop" style="display:none;">
+                    <span id="usernameDisplay" class="username-top"></span>
+                    <button class="logout-btn-top" id="logoutBtnTop" onclick="logout()">退出</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品列表</a>
+                <a href="alternatives.html">平替推荐</a>
+                <a href="login.html" id="loginLink">登录</a>
+                <a href="favorites.html" class="active" id="favoritesLink" style="display:none;">我的收藏</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <h2>我的收藏</h2>
+            <div class="product-grid" id="favoritesList">
+                <!-- 收藏商品将通过JS动态加载 -->
+            </div>
+            <div id="emptyFavorites" style="display:none; text-align:center; padding:40px;">
+                <p>您还没有收藏任何商品</p>
+                <a href="products.html">去逛逛 →</a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/imageHelper.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/favorites.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品详情 - 购物推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo">
+                    <h1>购物推荐</h1>
+                </div>
+                <div class="user-info-top" id="userInfoTop" style="display:none;">
+                    <span id="usernameDisplay" class="username-top"></span>
+                    <button class="logout-btn-top" id="logoutBtnTop" onclick="logout()">退出</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品列表</a>
+                <a href="alternatives.html">平替推荐</a>
+                <a href="login.html" id="loginLink">登录</a>
+                <a href="favorites.html" id="favoritesLink" style="display:none;">我的收藏</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="product-detail" id="productDetail">
+                <!-- 商品详情将通过JS动态加载 -->
+            </div>
+
+            <!-- 平替方案区域 -->
+            <section class="alternatives-section">
+                <h2>平替方案</h2>
+                <div class="alternatives-list" id="alternativesList">
+                    <!-- 平替商品将通过JS动态加载 -->
+                </div>
+            </section>
+
+            <!-- 用户评价 -->
+            <section class="reviews-section">
+                <h2>用户评价</h2>
+                <div class="reviews-list" id="reviewsList">
+                    <!-- 评价将通过JS动态加载 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/imageHelper.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
+    
+    <!-- Coze AI 聊天机器人 -->
+    <!-- SDK将通过js/ai-chat.js动态加载，避免502错误 -->
+    <script src="js/ai-chat.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>平替推荐 - 购物推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-left">
+                <div class="logo">
+                    <h1>购物推荐</h1>
+                </div>
+                <div class="user-info-top" id="userInfoTop" style="display:none;">
+                    <span id="usernameDisplay" class="username-top"></span>
+                    <button class="logout-btn-top" id="logoutBtnTop" onclick="logout()">退出</button>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品列表</a>
+                <a href="alternatives.html" class="active">平替推荐</a>
+                <a href="login.html" id="loginLink">登录</a>
+                <a href="favorites.html" id="favoritesLink" style="display:none;">我的收藏</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <!-- 页面标题区域 -->
+        <section class="page-header">
+            <div class="container">
+                <div class="page-header-content">
+                    <h1 class="page-title">AI智能平替推荐</h1>
+                    <p class="page-subtitle">AI自动分析并推荐高性价比平替商品，为您节省每一分钱</p>
+                </div>
+                <div class="page-stats">
+                    <div class="page-stat-item">
+                        <span class="stat-value">30+</span>
+                        <span class="stat-label">平替方案</span>
+                    </div>
+                    <div class="page-stat-item">
+                        <span class="stat-value">9</span>
+                        <span class="stat-label">覆盖分类</span>
+                    </div>
+                    <div class="page-stat-item">
+                        <span class="stat-value">30-70%</span>
+                        <span class="stat-label">平均节省</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 筛选和排序 -->
+        <section class="filters">
+            <div class="container">
+                <div class="filters-header">
+                    <h3>AI智能筛选</h3>
+                </div>
+                <div class="filters-content">
+                    <div class="filter-row">
+                        <div class="filter-group">
+                            <label><span class="filter-icon">🏷️</span>分类：</label>
+                            <select id="categoryFilter" onchange="filterAlternatives()">
+                                <option value="">全部分类</option>
+                                <option value="electronics">📱 电子产品</option>
+                                <option value="clothing">👔 服装配饰</option>
+                                <option value="cosmetics">💄 美妆护肤</option>
+                                <option value="home">🏠 家居用品</option>
+                                <option value="sports">⚽ 运动健身</option>
+                                <option value="food">🍔 食品饮料</option>
+                                <option value="books">📚 图书文具</option>
+                                <option value="baby">👶 母婴用品</option>
+                                <option value="car">🚗 汽车用品</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label><span class="filter-icon">💰</span>节省金额：</label>
+                            <select id="savingsFilter" onchange="filterAlternatives()">
+                                <option value="">全部</option>
+                                <option value="5000+">5000元以上</option>
+                                <option value="2000-5000">2000-5000元</option>
+                                <option value="1000-2000">1000-2000元</option>
+                                <option value="0-1000">1000元以下</option>
+                            </select>
+                        </div>
+                        <div class="filter-group">
+                            <label><span class="filter-icon">🔀</span>排序：</label>
+                            <select id="sortFilter" onchange="filterAlternatives()">
+                                <option value="default">默认排序</option>
+                                <option value="savings-desc">节省最多</option>
+                                <option value="savings-asc">节省最少</option>
+                                <option value="percentage-desc">节省比例最高</option>
+                            </select>
+                        </div>
+                        <button class="reset-filters-btn" onclick="resetAltFilters()">重置筛选</button>
+                    </div>
+                    <div class="quick-filters">
+                        <span class="quick-filter-label">快速筛选：</span>
+                        <button class="quick-filter-tag" onclick="quickAltFilter('savings-desc')">💰 节省最多</button>
+                        <button class="quick-filter-tag" onclick="quickAltFilter('electronics')">📱 电子产品</button>
+                        <button class="quick-filter-tag" onclick="quickAltFilter('cosmetics')">💄 美妆护肤</button>
+                        <button class="quick-filter-tag" onclick="quickAltFilter('home')">🏠 家居用品</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <section class="alternatives-intro">
+                <div class="intro-content">
+                    <h2>AI智能平替方案推荐</h2>
+                    <p>AI自动分析商品特性，为您精选高性价比的平替商品，用更少的钱享受相似的品质体验</p>
+                </div>
+            </section>
+
+            <section class="alternatives-list">
+                <div class="alternative-items" id="alternativesList">
+                    <!-- 平替方案将通过JS动态加载 -->
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/data.js"></script>
+    <script src="js/imageHelper.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/alternatives.js"></script>
+    
+    <!-- Coze AI 聊天机器人 -->
+    <!-- SDK将通过js/ai-chat.js动态加载，避免502错误 -->
+    <script src="js/ai-chat.js"></script>
+</body>
+</html>
+

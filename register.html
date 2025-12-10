@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册 - 购物推荐</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h1>购物推荐</h1>
+            </div>
+            <nav class="nav">
+                <a href="index.html">首页</a>
+                <a href="products.html">商品列表</a>
+                <a href="alternatives.html">平替推荐</a>
+                <a href="login.html">登录</a>
+                <a href="register.html" class="active">注册</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main">
+        <div class="container">
+            <div class="register-form">
+                <h2>用户注册</h2>
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label>用户名：</label>
+                        <input type="text" id="username" required minlength="3" maxlength="20" placeholder="3-20个字符">
+                        <small class="form-hint">用户名长度为3-20个字符</small>
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱：</label>
+                        <input type="email" id="email" required placeholder="example@email.com">
+                        <small class="form-hint">请输入有效的邮箱地址</small>
+                    </div>
+                    <div class="form-group">
+                        <label>手机号：</label>
+                        <input type="tel" id="phone" required pattern="[0-9]{11}" placeholder="11位手机号码">
+                        <small class="form-hint">请输入11位手机号码</small>
+                    </div>
+                    <div class="form-group">
+                        <label>密码：</label>
+                        <input type="password" id="password" required minlength="6" placeholder="至少6个字符">
+                        <small class="form-hint">密码长度至少6个字符</small>
+                    </div>
+                    <div class="form-group">
+                        <label>确认密码：</label>
+                        <input type="password" id="confirmPassword" required placeholder="请再次输入密码">
+                        <small class="form-hint">请确保两次输入的密码一致</small>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="agreeTerms" required>
+                            我已阅读并同意 <a href="#" onclick="alert('服务条款内容'); return false;">《服务条款》</a> 和 <a href="#" onclick="alert('隐私政策内容'); return false;">《隐私政策》</a>
+                        </label>
+                    </div>
+                    <button type="submit">注册</button>
+                    <p class="login-link">已有账号？<a href="login.html">立即登录</a></p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 购物推荐网站. 所有权利保留.</p>
+        </div>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/register.js"></script>
+</body>
+</html>
+

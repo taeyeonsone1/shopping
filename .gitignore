@@ -1,0 +1,9 @@
+node_modules/
+database.db
+*.log
+.DS_Store
+.env
+
+# AI Chat 配置文件（包含敏感token信息）
+js/ai-chat.js
+
